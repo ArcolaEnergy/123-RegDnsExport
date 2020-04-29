@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from splinter import Browser
 import time
 import sys
@@ -41,17 +43,31 @@ def login(browser):
     browser.fill('username', inputUsername)
     browser.fill('password', inputPassword)
     browser.find_by_id('login').first.click()
-    while browser.is_element_visible_by_xpath('//*[@id="body"]/div/div[5]/div[3]/div/table/tbody/tr/td[3]/input') == False:
+    print("login?")
+#    while browser.is_element_visible_by_xpath('//*[@id="body"]/div/div[5]/div[3]/div/table/tbody/tr/td[3]/input') == False:
+#        time.sleep(1)
+
+    time.sleep(5)
+    while True: 
+        if browser.url == "https://www.123-reg.co.uk/empty-basket/":
+            break;
+        if browser.url == "https://www.123-reg.co.uk/secure":
+            break;
+        print(browser.url)
         time.sleep(1)
+    print("post login")
     return browser
 
 
 def enumDomains(browser):
+    print("enumdomains")
     url = "https://www.123-reg.co.uk/secure/cpanel/domain/view_domains?rows=1000"
     browser.visit(url)
+    print( )
     table = browser.find_by_id('domstable').text.split('\n')[1:]
     domlist = []
     for row in table:
+        print(row)
         domlist.append(row.split(' ')[0])
     return domlist
 
