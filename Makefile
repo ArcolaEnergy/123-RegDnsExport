@@ -8,7 +8,7 @@ endif
 venv: venv/bin/activate
 
 venv/bin/activate: requirements.txt
-	test -d venv || virtualenv -p python3 --system-site-packages venv
+	test -d venv || virtualenv -p python3 venv
 	$(ENV) pip install --upgrade --force pip
 	$(ENV) pip install --force -Ur requirements.txt
 	touch venv/bin/activate
