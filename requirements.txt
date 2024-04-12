@@ -1,4 +1,4 @@
-dnspython==1.15.0
+dnspython==2.6.1
 py3dns==3.2.0
 selenium==3.14.0
 splinter==0.8.0
